@@ -1,0 +1,19 @@
+header {
+	background-color: #428bca;
+	padding: 10px 15px;
+}
+
+.nav-menu-button {
+	display: inline-block;
+	position: relative;
+	font-size: 35px;
+	line-height: 35px;
+	color: #fff;
+}
+.nav-menu-button:hover {
+	text-decoration: none;
+}
+.nav {
+	position: absolute;
+	left: 100%;
+}

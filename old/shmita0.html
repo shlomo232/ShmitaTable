@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shmita app prototype</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+<script src="js/jquery.csv-0.71.min.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script> // http://jqueryui.com/tabs/#vertical
+$(function() {
+$( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+$( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+});
+</script>
+<style>
+.ui-tabs-vertical { width: 55em; }
+.ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
+.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+.ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
+.ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
+</style>
+</head>
+<body>
+<div id="tabs">
+<ul>
+<li><a href="#kedusha">Kedushat shviit</a></li>
+<li><a href="#noKedusha">No kedushat shviit</a></li>
+<li><a href="#sefihin">Sefihin</a></li>
+<li><a href="#noSefihin">No sefihin</a></li>
+<li><a href="#biur">Needs biur</a></li>
+</ul>
+<div id="kedusha">
+<h2>Kedushat shviit</h2>
+<p id="kedushaList"></p>
+</div>
+<div id="noKedusha">
+<h2>No kedushat shviit</h2>
+<p id="noKedushaList"></p>
+</div>
+<div id="sefihin">
+<h2>Sefihin</h2>
+<p id="sefihinList"></p>
+</div>
+<div id="noSefihin">
+<h2>No sefihin</h2>
+<p id="noSefihinList"></p>
+</div>
+<div id="biur">
+<h2>Needs biur</h2>
+<p id="biurList"></p>
+</div>
+</div>
+<p id="demo"></p>
+
+<script>
+/* // Food data (I use meats so that my fake data won't eventually get mixed with real data)
+var foods=[];
+function makeDate(year, month, day) {
+	return new Date(year, month-1, day); // -1 because January=0, February=1 in Javascript
+}
+var chicken = {
+	English: "chicken",
+	Hebrew: "עוף",
+	beginKedusha: makeDate(2014,5,24),
+	endKedusha: parseDate("2014.11.24"),
+	beginSefihin: makeDate(2014,5,24),
+	endSefihin: makeDate(2014,9,24),
+	biur: makeDate(2014,11,24),
+	type: "meat",
+	info: "Everything tastes like chicken"
+};
+foods.push(chicken);
+var beef = {
+	English: "beef",
+	Hebrew: "בקר",
+	beginKedusha: makeDate(2014,5,24),
+	endKedusha: makeDate(2014,5,24),
+	beginSefihin: makeDate(2014,5,24),
+	endSefihin: makeDate(2014,5,24),
+	biur: makeDate(2014,5,24),
+	type: "meat",
+	info: "Yum yum yum"
+};
+foods.push(beef);
+*/
+
+
+// Real data: http://www.toraland.org.il/%D7%91%D7%99%D7%AA-%D7%94%D7%9E%D7%93%D7%A8%D7%A9/%D7%A9%D7%A0%D7%AA-%D7%A9%D7%9E%D7%99%D7%98%D7%94-%D7%AA%D7%A9%D7%A2%D7%94/%D7%9C%D7%95%D7%97-%D7%A7%D7%93%D7%95%D7%A9%D7%AA-%D7%A9%D7%91%D7%99%D7%A2%D7%99%D7%AA-%D7%95%D7%91%D7%99%D7%A2%D7%95%D7%A8-%D7%91%D7%A4%D7%99%D7%A8%D7%95%D7%AA-%D7%94%D7%90%D7%99%D7%9C%D7%9F.aspx
+
+function parseDate(input) {
+  if (input=="0") return new Date(2017,0,1); // A 2017 date means no biur and no kedusha/sefihin intervals
+  var parts = input.split('.');
+  return new Date(parts[0], parts[1]-1, parts[2]); // new Date(year, month-1, day) - months are zero based 
+}
+var language="en";
+
+// Functions
+
+var now = new Date();
+
+function kedusha(food) {
+	return (food.beginKedusha < now && food.endKedusha > now);
+}
+
+function noKedusha(food) {
+	return !kedusha(food);
+}
+
+function sefihin(food) {
+	return (food.beginSefihin < now && food.endSefihin > now);
+}
+
+function noSefihin(food) {
+	return !sefihin(food);
+}
+
+function needsBiur(food) {
+	return (food.biur < now);
+}
+
+function isMeat(food) {
+	return (food.type=="meat");
+}
+
+function isVegetable(food) {
+	return (food.type=="vegetable");
+}
+
+function isFruit(food) {
+	return (food.type=="fruit");
+}
+
+function isGrain(food) {
+	return (food.type=="grain");
+}
+
+function isSeasoning(food) {
+	return (food.type=="seasoning");
+}
+
+function hasShmita(food) {
+	return (food.type!="meat");
+}
+
+function makeList(listFunc) {
+	var list=[];
+	for (var i = 0; i < foodsImport.length; i++)
+		if (listFunc(foodsImport[i])) list.push(foodsImport[i]);
+//		if (listFunc(foods[i])) list.push(foods[i]);
+	if (language=="en")
+		list.sort(function(a,b) { return a.English.localeCompare(b.English); } );
+	else
+		list.sort(function(a,b) { return a.Hebrew.localeCompare(b.Hebrew); } );
+	return list;
+}
+
+function displayList(list) {
+	var text="";
+	for (var i = 0; i < list.length; i++) {
+		if (language=="en") text = text + list[i].English+"<br>";
+		else                text = text + list[i].Hebrew+"<br>";
+	}
+	return text;
+}
+
+
+// Make page elements
+
+var foodsText=null;
+    jQuery.ajax({
+        url:'./shmita0.csv', 
+        success: function(result) {
+            foodsText=result;
+        },
+        dataType:"text",
+        async:   false}
+    );
+foodsImport= $.csv.toObjects(foodsText);
+
+for (var i = 0; i < foodsImport.length; i++) {
+  foodsImport[i].beginKedusha=parseDate(foodsImport[i].KedushaNum);
+  foodsImport[i].endKedusha=parseDate(foodsImport[i].NoKedushaNum);
+  foodsImport[i].beginSefihin=parseDate(foodsImport[i].SefihinNum);
+  foodsImport[i].endSefihin=parseDate(foodsImport[i].NoSefihinNum);
+  foodsImport[i].biur=parseDate(foodsImport[i].BiurNum);
+}
+
+document.getElementById("kedushaList").innerHTML=displayList(makeList(kedusha));
+document.getElementById("noKedushaList").innerHTML = displayList(makeList(noKedusha));
+document.getElementById("sefihinList").innerHTML = displayList(makeList(sefihin));
+document.getElementById("noSefihinList").innerHTML = displayList(makeList(noSefihin));
+document.getElementById("biurList").innerHTML = displayList(makeList(kedusha));
+
+</script>
+</body>
+</html>
