@@ -1,20 +1,68 @@
 <!doctype html>
-<html ng-app>
-	<head>
-		<link href="css/bootstrap.min.css" rel="stylesheet" />
-		<link href="css/bootstrap-theme.min.css" rel="stylesheet" />
-		<link href="css/styles.css" rel="stylesheet" />
-	</head>
-	<body>
-		<header>
-			<a class="nav-menu-button" href="#" ng-click="">&#9776;</a>
-		</header>
-		<ul class="nav nav-pills nav-stacked">
-			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#">Profile</a></li>
-			<li><a href="#">Messages</a></li>
-		</ul>
-	</body>
-	<script src="js/angular.min.js" type="text/javascript"></script>
-	<script src="js/script.js" type="text/javascript"></script>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Shmita Table</title>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="js/jquery.csv-0.71.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="js/hebrewdate.js"></script>
+    <script language="JavaScript" type="text/javascript" src="js/shmita.js"></script>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container">
+<h1>Shmita</h1>
+    <div id="tabs" role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a id="tabAboutHelp" role="tab" data-toggle="tab" href="#aboutHelp">About/Help</a>
+            </li>
+            <li role="presentation"><a id="tabKedusha" role="tab" data-toggle="tab" href="#kedusha">Kedusha</a>
+            </li>
+            <li role="presentation"><a id="tabNoKedusha" role="tab" data-toggle="tab" href="#noKedusha">No kedusha</a>
+            </li>
+            <li role="presentation"><a id="tabSefihin" role="tab" data-toggle="tab" href="#sefihin">Sefihin</a>
+            </li>
+            <li role="presentation"><a id="tabNoSefihin" role="tab" data-toggle="tab" href="#noSefihin">No sefihin</a>
+            </li>
+            <li role="presentation"><a id="tabBiur" role="tab" data-toggle="tab" href="#biur">Needs biur</a>
+            </li>
+        </ul>
+     </div>
+  <div class="tab-content">
+        <div role="tabpanel" class="tab-pane" id="kedusha">
+            <h2 id="titleKedusha">Kedushat shviit</h2>
+            <p id="listKedusha"></p>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="noKedusha">
+            <h2 id="titleNoKedusha">No kedushat shviit</h2>
+            <p id="listNoKedusha"></p>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="sefihin">
+            <h2 id="titleSefihin">Sefihin</h2>
+            <p id="listSefihin"></p>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="noSefihin">
+            <h2 id="titleNoSefihin">No sefihin</h2>
+            <p id="listNoSefihin"></p>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="biur">
+            <h2 id="titleBiur">Needs biur</h2>
+            <p id="listBiur"></p>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="aboutHelp">
+            <h2 id="titleAbout">About/Help</h2>
+            <p id="aboutText"></p>
+        </div>
+        <p id="demo"></p>
+        <a href="javascript:changeLang()">Change language</a>
+        <div id="dialog" title="Dialog title" style="display: none;">
+            <div id="dialogText"></div>
+        </div>
+</div>
+</body>
 </html>
