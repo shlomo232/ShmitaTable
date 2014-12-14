@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shmita app prototype</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+<script src="js/jquery.csv-0.71.min.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script> // http://jqueryui.com/tabs/#vertical
+$(function() {
+$( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+$( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+});
+</script>
+<style>
+.ui-tabs-vertical { width: 55em; }
+.ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
+.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+.ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
+.ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
+</style>
+</head>
+<body>
+<div id="tabs">
+<ul>
+<li><a href="#kedusha">Kedushat shviit</a></li>
+<li><a href="#noKedusha">No kedushat shviit</a></li>
+<li><a href="#sefihin">Sefihin</a></li>
+<li><a href="#noSefihin">No sefihin</a></li>
+<li><a href="#biur">Needs biur</a></li>
+</ul>
+<div id="kedusha">
+<h2>Kedushat shviit</h2>
+<p id="kedushaList"></p>
+</div>
+<div id="noKedusha">
+<h2>No kedushat shviit</h2>
+<p id="noKedushaList"></p>
+</div>
+<div id="sefihin">
+<h2>Sefihin</h2>
+<p id="sefihinList"></p>
+</div>
+<div id="noSefihin">
+<h2>No sefihin</h2>
+<p id="noSefihinList"></p>
+</div>
+<div id="biur">
+<h2>Needs biur</h2>
+<p id="biurList"></p>
+</div>
+</div>
+<p id="demo"></p>
+
+<script language="JavaScript" type= "text/javascript" src="js/hebrewdate.js"></script>
+<script>
+
+// Real data: http://www.toraland.org.il/%D7%91%D7%99%D7%AA-%D7%94%D7%9E%D7%93%D7%A8%D7%A9/%D7%A9%D7%A0%D7%AA-%D7%A9%D7%9E%D7%99%D7%98%D7%94-%D7%AA%D7%A9%D7%A2%D7%94/%D7%9C%D7%95%D7%97-%D7%A7%D7%93%D7%95%D7%A9%D7%AA-%D7%A9%D7%91%D7%99%D7%A2%D7%99%D7%AA-%D7%95%D7%91%D7%99%D7%A2%D7%95%D7%A8-%D7%91%D7%A4%D7%99%D7%A8%D7%95%D7%AA-%D7%94%D7%90%D7%99%D7%9C%D7%9F.aspx
+
+function monthToNum(str) {
+  var num;
+  switch (str) {
+    case "Tishrei":
+      num=7; break;
+    case "Cheshvan":
+    case "Heshvan":
+      num=8; break;
+    case "Kislev":
+      num=9; break;
+    case "Tevet":
+      num=10; break;
+    case "Shevat":
+    case "Shvat":
+      num=11; break;
+    case "Adar":
+    case "Adar I":
+    case "Adar 1":
+      num=12; break;
+    case "Adar II":
+    case "Adar 2":
+      num=13; break;
+    case "Nissan":
+    case "Nisan":
+      num=1; break;
+    case "Iyyar":
+    case "Iyar":
+      num=2; break;
+    case "Sivan":
+      num=3; break;
+    case "Tammuz":
+    case "Tamuz":
+      num=4; break;
+    case "Av":
+      num=5; break;
+    case "Elul":
+      num=6; break;
+  }
+  return num;
+}
+function parseDate(input) {
+    var dateArray;
+    if (input=="None") return new Date(2017,0,1); // A 2017 date means no biur and no kedusha/sefihin intervals
+    var parts = input.split(' ');
+    dateArray=jd_to_gregorian(hebrew_to_jd(Number(parts[2]), Number(monthToNum(parts[1])), Number(parts[0])));
+//    alert(parts[2]+" "+monthToNum(parts[1])+" "+parts[0]+" "+dateArray);
+    return new Date(dateArray[0], dateArray[1]-1, dateArray[2]);
+}
+
+var language="en";
+
+// Functions
+
+var now = new Date();
+
+function kedusha(food) {
+	return (food.beginKedusha < now && food.endKedusha > now);
+}
+
+function noKedusha(food) {
+	return !kedusha(food);
+}
+
+function sefihin(food) {
+	return (food.beginSefihin < now && food.endSefihin > now);
+}
+
+function noSefihin(food) {
+	return !sefihin(food);
+}
+
+function needsBiur(food) {
+	return (food.biur < now);
+}
+
+function isMeat(food) {
+	return (food.type=="meat");
+}
+
+function isVegetable(food) {
+	return (food.type=="vegetable");
+}
+
+function isFruit(food) {
+	return (food.type=="fruit");
+}
+
+function isGrain(food) {
+	return (food.type=="grain");
+}
+
+function isSeasoning(food) {
+	return (food.type=="seasoning");
+}
+
+function hasShmita(food) {
+	return (food.type!="meat");
+}
+
+function makeList(listFunc) {
+	var list=[];
+	for (var i = 0; i < foodsImport.length; i++)
+		if (listFunc(foodsImport[i])) list.push(foodsImport[i]);
+	if (language=="en")
+		list.sort(function(a,b) { return a.English.localeCompare(b.English); } );
+	else
+		list.sort(function(a,b) { return a.Hebrew.localeCompare(b.Hebrew); } );
+	return list;
+}
+
+function displayList(list) {
+	var text="";
+	for (var i = 0; i < list.length; i++) {
+		if (language=="en") text = text + list[i].English+"<br>";
+		else                text = text + list[i].Hebrew+"<br>";
+	}
+	return text;
+}
+
+
+// Make page elements
+
+var foodsText=null;
+    jQuery.ajax({
+        url:'./shmita.csv', 
+        success: function(result) {
+            foodsText=result;
+        },
+        dataType:"text",
+        async:   false}
+    );
+foodsImport= $.csv.toObjects(foodsText);
+
+for (var i = 0; i < foodsImport.length; i++) {
+  foodsImport[i].beginKedusha=parseDate(foodsImport[i].Kedusha);
+  foodsImport[i].endKedusha=parseDate(foodsImport[i].NoKedusha);
+  foodsImport[i].beginSefihin=parseDate(foodsImport[i].Sefihin);
+  foodsImport[i].endSefihin=parseDate(foodsImport[i].NoSefihin);
+  foodsImport[i].biur=parseDate(foodsImport[i].Biur);
+}
+
+document.getElementById("kedushaList").innerHTML=displayList(makeList(kedusha));
+document.getElementById("noKedushaList").innerHTML = displayList(makeList(noKedusha));
+document.getElementById("sefihinList").innerHTML = displayList(makeList(sefihin));
+document.getElementById("noSefihinList").innerHTML = displayList(makeList(noSefihin));
+document.getElementById("biurList").innerHTML = displayList(makeList(biur));
+
+</script>
+</body>
+</html>

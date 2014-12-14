@@ -1,0 +1,6 @@
+<ul class="nav nav-pills">
+	<li ng-repeat="navItem in statusNav" role="presentation" ng-class="{active: navItem.active}"><a href="#/status/{{navItem.route}}">{{navItem.name}}</a></li>
+</ul>
+<ul>
+	<li ng-repeat="food in foodList" class="{{food.Type}}">{{getTranslation(food)}}</li>
+</ul>
