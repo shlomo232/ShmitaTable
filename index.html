@@ -68,6 +68,7 @@ $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
 /* TODO:
 Description box when clicking; content includes infoHe and infoEn - http://stackoverflow.com/questions/27346563/havoc-while-escaping-quotes-in-javascript
 http://robertnyman.com/2008/11/20/why-inline-css-and-javascript-code-is-such-a-bad-thing/
+Tab listing all species plus search box at top
 Appearance
 App wrapper
 */
@@ -76,7 +77,7 @@ var language="en";
 var now = new Date();
 var nowHe = jd_to_hebrew(gregorian_to_jd(now.getFullYear(),now.getMonth()+1,now.getDate())); // in special array format
 var recent= new Date(); // A number of days ago - anything whose status changed in last # days gets an "updated" flag.
-recent.setTime(now.getTime()-3*24*60*60*1000); 
+recent.setTime(now.getTime()-7*24*60*60*1000); 
 
 // Functions
 
