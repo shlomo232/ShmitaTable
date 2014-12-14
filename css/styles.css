@@ -1,6 +1,27 @@
+html, body {
+	height: 100%;
+	min-height: 100%;
+	position: relative;
+}
+
 header {
 	background-color: #428bca;
 	padding: 10px 15px;
+	height: 55px;
+}
+
+.main {
+	height: calc(100% - 55px);
+	position: relative;
+}
+
+.content {
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.content .nav {
+	margin-bottom: 10px;
 }
 
 .nav-menu-button {
@@ -9,11 +30,37 @@ header {
 	font-size: 35px;
 	line-height: 35px;
 	color: #fff;
+	cursor: pointer;
 }
 .nav-menu-button:hover {
 	text-decoration: none;
 }
-.nav {
+nav {
 	position: absolute;
-	left: 100%;
+	left: -110%;
+	transition: left 0.5s;
+	width: 100%;
+	height: 100%;
+}
+nav .nav {
+	box-shadow: 10px 0 10px rgba(0,0,0,0.2);
+	height: 100%;
+	width: 50%;
+	background-color: white;
+	position: relative;
+	z-index: 1000;
+}
+.menu-open nav {
+	left: 0;
+}
+button.nav-lang {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+.fruit {
+	color: red;
+}
+.vegetable {
+	color: green;
 }
