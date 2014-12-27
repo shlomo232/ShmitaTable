@@ -62,8 +62,8 @@ Shmita.app.controller('MainController', function($scope, language) {
 
 	$scope.languageLabel = function() {
 		var labels = {
-			English: 'English',
-			Hebrew: 'עברית'
+			English: 'עברית',
+			Hebrew: 'English'
 		}
 		return labels[language.getLanguage()];
 	};
