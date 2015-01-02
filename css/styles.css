@@ -69,3 +69,8 @@ button.nav-lang {
 .vegetable {
 	color: green;
 }
+
+.about-heading {
+    font-size: 30px;
+    font-weight: bold;
+}
