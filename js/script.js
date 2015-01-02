@@ -27,10 +27,6 @@ Shmita.app.controller('MainController', function($scope, language) {
 		{
 			name: 'By Status',
 			route: 'status'
-		},
-		{
-			name: 'Calendar',
-			route: 'calendar'
 		}
 	]
 

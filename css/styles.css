@@ -7,11 +7,11 @@ html, body {
 header {
 	background-color: #428bca;
 	padding: 10px 15px;
-	height: 55px;
+	height: 60px;
 }
 
 .main {
-	height: calc(100% - 55px);
+	height: calc(100% - 60px);
 	position: relative;
 }
 
@@ -49,6 +49,10 @@ nav .nav {
 	background-color: white;
 	position: relative;
 	z-index: 1000;
+}
+
+.topnav {
+	background-color: white;
 }
 .menu-open nav {
 	left: 0;
