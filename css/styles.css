@@ -53,6 +53,7 @@ nav .nav {
 
 .topnav {
 	background-color: white;
+	border-radius:4px;
 }
 .menu-open nav {
 	left: 0;
