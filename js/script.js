@@ -18,14 +18,20 @@ Shmita.app.controller('MainController', function($scope, language) {
 	$scope.nav = [
 		{
 			name: 'Home',
+			English: 'Home',
+			Hebrew: 'אודות',
 			route: ''
 		},
 		{
 			name: 'By Species',
+			English: 'By Species',
+			Hebrew: 'לפי שם',
 			route: 'species'
 		},
 		{
 			name: 'By Status',
+			English: 'By Status',
+			Hebrew: 'לפי סטטוס',
 			route: 'status'
 		}
 	]
@@ -80,22 +86,32 @@ Shmita.app.controller('StatusController', function($scope, $routeParams, status)
 	$scope.statusNav = [
 		{
 			name: 'Kedushat Shviit',
+			English: 'Kedushat Shviit',
+			Hebrew: 'Kedushat Shviit',
 			route: 'kedusha'
 		},
 		{
 			name: 'No Kedushat Shviit',
+			English: 'No Kedushat Shviit',
+			Hebrew: 'No Kedushat Shviit',
 			route: 'noKedusha'
 		},
 		{
 			name: 'Sefihin',
+			English: 'Sefihin',
+			Hebrew: 'Sefihin',
 			route: 'sefihin'
 		},
 		{
 			name: 'No Sefihin',
+			English: 'No Sefihin',
+			Hebrew: 'No Sefihin',
 			route: 'noSefihin'
 		},
 		{
 			name: 'Needs Biur',
+			English: 'Needs Biur',
+			Hebrew: 'Needs Biur',
 			route: 'needsBiur'
 		}
 	]

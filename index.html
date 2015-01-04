@@ -9,7 +9,12 @@
 	<body ng-class="{'menu-open': menuOpen}" ng-controller="MainController">
 		<header>
 			<ul class="nav nav-pills">
-				<li ng-repeat="navItem in nav" role="presentation" ng-class="{active: navItem.active}" class="topnav"><a href="#/{{navItem.route}}">{{navItem.name}}</a></li>
+				<li ng-repeat="navItem in nav" role="presentation" ng-class="{active: navItem.active}" class="topnav" ng-if="language === 'English'">
+					<a href="#/{{navItem.route}}">{{navItem.English}}</a>
+				</li>
+				<li ng-repeat="navItem in nav" role="presentation" ng-class="{active: navItem.active}" class="topnav" ng-if="language === 'Hebrew'">
+					<a href="#/{{navItem.route}}">{{navItem.Hebrew}}</a>
+				</li>
 			</ul>
 			<button type="button" class="btn btn-default nav-lang" ng-cloak ng-click="switchLanguage()">{{ languageLabel() }}</button>
 		</header>
