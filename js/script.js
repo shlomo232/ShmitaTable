@@ -87,31 +87,31 @@ Shmita.app.controller('StatusController', function($scope, $routeParams, status)
 		{
 			name: 'Kedushat Shviit',
 			English: 'Kedushat Shviit',
-			Hebrew: 'Kedushat Shviit',
+			Hebrew: 'קדושת שביעית',
 			route: 'kedusha'
 		},
 		{
 			name: 'No Kedushat Shviit',
 			English: 'No Kedushat Shviit',
-			Hebrew: 'No Kedushat Shviit',
+			Hebrew: 'ללא קדושת שביעית',
 			route: 'noKedusha'
 		},
 		{
 			name: 'Sefihin',
 			English: 'Sefihin',
-			Hebrew: 'Sefihin',
+			Hebrew: 'ספיחין',
 			route: 'sefihin'
 		},
 		{
 			name: 'No Sefihin',
 			English: 'No Sefihin',
-			Hebrew: 'No Sefihin',
+			Hebrew: 'ללא ספיחין',
 			route: 'noSefihin'
 		},
 		{
 			name: 'Needs Biur',
 			English: 'Needs Biur',
-			Hebrew: 'Needs Biur',
+			Hebrew: 'צריכים ביעור',
 			route: 'needsBiur'
 		}
 	]

@@ -1,5 +1,5 @@
 Shmita.app.factory('status', function($http, $q, utils, CSV) {
-	var language="en";
+	var language="English";
 	
 	// Functions
 	
@@ -54,7 +54,7 @@ Shmita.app.factory('status', function($http, $q, utils, CSV) {
 					list.push(foodsImport[i]);
 				}
 			}
-			if (language=="en") {
+			if (language=='English') {
 				list.sort(function(a,b) { return a.English.localeCompare(b.English); } );
 			} else {
 				list.sort(function(a,b) { return a.Hebrew.localeCompare(b.Hebrew); } );
