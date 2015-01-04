@@ -7,7 +7,8 @@ Shmita.app.config(function($routeProvider) {
 			templateUrl : 'pages/home.html'
 		})
 		.when('/species', {
-			redirectTo : 'pages/species.html',
+			templateUrl : 'pages/species.html',
+			controller : 'SpeciesController'
 		})
 		.when('/status/:status', {
 			templateUrl : 'pages/status.html',

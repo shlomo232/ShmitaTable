@@ -43,6 +43,7 @@ Shmita.app.controller('MainController', function($scope, language) {
 	}
 
 	$scope.getTranslation = function(textObject) {
+//		alert(textObject.toSource());
 		return textObject[language.getLanguage()];
 	};
 
@@ -133,4 +134,15 @@ Shmita.app.controller('StatusController', function($scope, $routeParams, status)
 		});
 	}
 	switchTab();
+});
+
+Shmita.app.controller('SpeciesController', function($scope, $routeParams, species) {
+	$scope.$watch($routeParams.species, initList);
+
+	function initList() {
+		species.getList($routeParams.species).then(function(list) {
+			$scope.foodList = list;
+		});
+	}
+	initList();
 });
