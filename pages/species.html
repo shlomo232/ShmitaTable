@@ -1,4 +1,19 @@
-Unfinished species page
-<ul>
-	<li ng-repeat="food in foodList" class="{{food.Type}}">{{getTranslation(food)}}</li>
-</ul>
+<!-- http://fdietz.github.io/recipes-with-angular-js/common-user-interface-patterns/filtering-and-sorting-a-list.html -->
+<div ng-if="language === 'English'">
+	Click on a species to see its information. You can filter species using the text box.
+	<form class="form-inline">
+		<input ng-model="query" type="text" placeholder="Filter by" autofocus>
+	</form>
+	<ul>
+		<li ng-repeat="food in foodList | filter:{English:query} | orderBy: 'English' " class="{{food.Type}}">{{getTranslation(food)}}</li>
+	</ul>
+</div>
+<div ng-if="language === 'Hebrew'">
+	לחץ על סוג פרי/ירק כדי לראות את הפרטים שלו. אפשר לסנן על ידי הקלדה בתיבת טקסט.
+	<form class="form-inline">
+		<input ng-model="query" type="text" placeholder="סנן לפי" autofocus>
+	</form>
+	<ul>
+		<li ng-repeat="food in foodList | filter:{English:query} | orderBy: 'Hebrew' " class="{{food.Type}}">{{getTranslation(food)}}</li>
+	</ul>
+</div>
