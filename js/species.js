@@ -8,7 +8,6 @@ Shmita.app.factory('species', function($http, $q, utils, CSV) {
 
 	var foodsImport = [];
 	$http.get('./shmita.csv').then(function(result) {
-//		foodsImport = CSV.CSVToObjects(result.data);
 		foodsImport = $.csv.toObjects(result.data);
 		loadFoods();
 		loadedFoodsDeferred.resolve()
@@ -32,11 +31,6 @@ Shmita.app.factory('species', function($http, $q, utils, CSV) {
 		//		if (listFunc(foodsImport[i])) {
 					list.push(foodsImport[i]);
 		//		}
-			}
-			if (language=='English') {
-				list.sort(function(a,b) { return a.English.localeCompare(b.English); } );
-			} else {
-				list.sort(function(a,b) { return a.Hebrew.localeCompare(b.Hebrew); } );
 			}
 			listDeferred.resolve(list);
 		});
