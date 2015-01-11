@@ -8,7 +8,7 @@
 		<li ng-repeat="food in foodList | filter:{English:query} | orderBy: 'English' " class="{{food.Type}}">{{getTranslation(food)}}</li>
 	</ul>
 </div>
-<div ng-if="language === 'Hebrew'">
+<div ng-if="language === 'Hebrew'" style="direction: rtl;">
 	לחץ על סוג פרי/ירק כדי לראות את הפרטים שלו. אפשר לסנן על ידי הקלדה בתיבת טקסט.
 	<form class="form-inline">
 		<input ng-model="query" type="text" placeholder="סנן לפי" autofocus>
