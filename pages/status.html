@@ -1,7 +1,16 @@
+<div ng-if="language === 'English'">
 <ul class="nav nav-pills">
-	<li ng-repeat="navItem in statusNav" role="presentation" ng-class="{active: navItem.active}" ng-if="language === 'English'"><a href="#/status/{{navItem.route}}">{{navItem.English}}</a></li>
-	<li ng-repeat="navItem in statusNav" role="presentation" ng-class="{active: navItem.active}" ng-if="language === 'Hebrew'"><a href="#/status/{{navItem.route}}">{{navItem.Hebrew}}</a></li>
+	<li ng-repeat="navItem in statusNav" role="presentation" ng-class="{active: navItem.active}"><a href="#/status/{{navItem.route}}">{{navItem.English}}</a></li>
 </ul>
 <ul>
-	<li ng-repeat="food in foodList" class="{{food.Type}}">{{getTranslation(food)}}</li>
+	<li ng-repeat="food in foodList | orderBy: 'English'" class="{{food.Type}}">{{getTranslation(food)}}</li>
 </ul>
+</div>
+<div ng-if="language === 'Hebrew'" style="direction: rtl;">
+<ul class="nav nav-pills">
+	<li ng-repeat="navItem in statusNav" role="presentation" ng-class="{active: navItem.active}"><a href="#/status/{{navItem.route}}">{{navItem.Hebrew}}</a></li>
+</ul>
+<ul>
+	<li ng-repeat="food in foodList | orderBy: 'Hebrew'" class="{{food.Type}}">{{getTranslation(food)}}</li>
+</ul>
+</div>

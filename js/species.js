@@ -8,7 +8,8 @@ Shmita.app.factory('species', function($http, $q, utils, CSV) {
 
 	var foodsImport = [];
 	$http.get('./shmita.csv').then(function(result) {
-		foodsImport = CSV.CSVToObjects(result.data);
+//		foodsImport = CSV.CSVToObjects(result.data);
+		foodsImport = $.csv.toObjects(result.data);
 		loadFoods();
 		loadedFoodsDeferred.resolve()
 	});
