@@ -5,7 +5,7 @@
 		<input ng-model="query" type="text" placeholder="Filter by" autofocus>
 	</form>
 	<ul>
-		<li ng-repeat="food in foodList | filter:{English:query} | orderBy: 'English' " class="{{food.Type}}">{{getTranslation(food)}}</li>
+		<li ng-repeat="food in foodList | filter:{English:query} | orderBy: 'English' " class="{{food.Type}}"  ng-click="speciesInfo()">{{getTranslation(food)}}</li>
 	</ul>
 </div>
 <div ng-if="language === 'Hebrew'" style="direction: rtl;">

@@ -2,7 +2,7 @@ Shmita.app.directive('navClick', function() {
 	return {
     	restrict: 'A',
 		link: function($scope, element, attrs) {
-			console.log(element);
+//			console.log(element);
 			element[0].addEventListener('click', function(ev) {
 				console.log(ev.target.nodeName);
 				if (ev.target.nodeName === 'NAV' || ev.target.nodeName === 'A') {
@@ -81,6 +81,10 @@ Shmita.app.controller('MainController', function($scope, language) {
 	$scope.monthListEnHe=['ינואר','פברואר','מרץ','אפריל','מאי','יוני','יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'];
 	$scope.monthListHe=['Nisan','Iyar','Sivan','Tammuz','Av','Elul','Tishrei','Heshvan','Kislev','Tevet','Shvat','Adar','Adar II'];
 	$scope.monthListHeHe=['ניסן','אייר','סיון','תמוז','אב','אלול','תשרי','חשון','כסלו','טבת','שבט','אדר','אדר ב'];
+
+	$scope.myDialog = function(str) {
+		vex.dialog.alert(str);
+	}
 });
 
 Shmita.app.controller('StatusController', function($scope, $routeParams, status) {
@@ -120,7 +124,7 @@ Shmita.app.controller('StatusController', function($scope, $routeParams, status)
 	$scope.$watch($routeParams.status, switchTab);
 
 	function switchTab() {
-		console.log('status', $routeParams.status);
+//		console.log('status', $routeParams.status);
 		$scope.statusNav.forEach(function(tab){
 			var activeTab;
 			if (tab.route === $routeParams.status) {

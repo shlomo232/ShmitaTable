@@ -1,6 +1,15 @@
 Shmita = {};
 Shmita.app = angular.module('ShmitaApp', ['ngRoute']);
 
+Shmita.app.config( [
+    '$compileProvider',
+    function( $compileProvider )
+    {   
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|javascript):/);
+        // Angular before v1.2 uses $compileProvider.urlSanitizationWhitelist(...)
+    }
+]);
+
 Shmita.app.config(function($routeProvider) {
 	$routeProvider
 		.when('/', {

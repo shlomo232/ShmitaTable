@@ -3,7 +3,7 @@
 	<li ng-repeat="navItem in statusNav" role="presentation" ng-class="{active: navItem.active}"><a href="#/status/{{navItem.route}}">{{navItem.English}}</a></li>
 </ul>
 <ul>
-	<li ng-repeat="food in foodList | orderBy: 'English'" class="{{food.Type}}">{{getTranslation(food)}}</li>
+	<li ng-repeat="food in foodList | orderBy: 'English'" class="{{food.Type}}"><div style="display: inline-block;" ng-click="myDialog(food.English);">{{getTranslation(food)}}</div></li>
 </ul>
 </div>
 <div ng-if="language === 'Hebrew'" style="direction: rtl;">
