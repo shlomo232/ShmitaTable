@@ -5,7 +5,7 @@
 		<input ng-model="query" type="text" placeholder="Filter by" autofocus>
 	</form>
 	<ul>
-		<li ng-repeat="food in foodList | filter:{English:query} | orderBy: 'English' " class="{{food.Type}}"  ng-click="speciesInfo()">{{getTranslation(food)}}</li>
+		<li ng-repeat="food in foodList | filter:{English:query} | orderBy: 'English' " class="{{food.Type}}"><div style="display: inline-block;" ng-click="dialogEn(food);">{{getTranslation(food)}}</div></li>
 	</ul>
 </div>
 <div ng-if="language === 'Hebrew'" style="direction: rtl;">
@@ -14,6 +14,6 @@
 		<input ng-model="query" type="text" placeholder="סנן לפי" autofocus>
 	</form>
 	<ul>
-		<li ng-repeat="food in foodList | filter:{Hebrew:query} | orderBy: 'Hebrew' " class="{{food.Type}}">{{getTranslation(food)}}</li>
+		<li ng-repeat="food in foodList | filter:{Hebrew:query} | orderBy: 'Hebrew' " class="{{food.Type}}"><div style="display: inline-block;" ng-click="dialogHe(food);">{{getTranslation(food)}}</div></li>
 	</ul>
 </div>

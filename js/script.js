@@ -82,7 +82,27 @@ Shmita.app.controller('MainController', function($scope, language) {
 	$scope.monthListHe=['Nisan','Iyar','Sivan','Tammuz','Av','Elul','Tishrei','Heshvan','Kislev','Tevet','Shvat','Adar','Adar II'];
 	$scope.monthListHeHe=['ניסן','אייר','סיון','תמוז','אב','אלול','תשרי','חשון','כסלו','טבת','שבט','אדר','אדר ב'];
 
-	$scope.myDialog = function(str) {
+	$scope.dialogEn = function(food) {
+		str="";
+		str=str+"<b>"+food.English+"</b><br>";
+		str=str+"<b>Type:</b> "+food.Type+"<br>";
+		str=str+"<b>Kedusha from:</b> "+food.KedushaEn+"<br>";
+		str=str+"<b>Kedusha until:</b> "+food.NoKedushaEn+"<br>";
+		str=str+"<b>Sefihin from:</b> "+food.SefihinEn+"<br>";
+		str=str+"<b>Sefihin until:</b> "+food.NoSefihinEn+"<br>";
+		str=str+"<b>Zman Biur:</b> "+food.BiurEn+"<br>";
+		vex.dialog.alert(str);
+	}
+	$scope.dialogHe = function(food) {
+		str="<div style='direction: rtl;'>";
+		str=str+"<b>"+food.Hebrew+"</b><br>";
+		str=str+"<b>סוג:</b> "+food.Type+"<br>";
+		str=str+"<b>קדושה מ:</b> "+food.KedushaHe+"<br>";
+		str=str+"<b>קדושה עד:</b> "+food.NoKedushaHe+"<br>";
+		str=str+"<b>ספיחין מ:</b> "+food.SefihinHe+"<br>";
+		str=str+"<b>ספיחין עד:</b> "+food.NoSefihinHe+"<br>";
+		str=str+"<b>זמן ביעור:</b> "+food.BiurHe+"<br>";
+		str=str+"</div>";
 		vex.dialog.alert(str);
 	}
 });

@@ -1,8 +1,8 @@
 Hebrew,English,KedushaHe,NoKedushaHe,SefihinHe,NoSefihinHe,BiurHe,KedushaEn,NoKedushaEn,SefihinEn,NoSefihinEn,BiurEn,Type,Kedusha,NoKedusha,Sefihin,NoSefihin,Biur
-אבטיח,Watermelon,ד תשרי,חנוכה תשע”ו,א ניסן,חנוכה תשע”ו,"ראה”ש תשע""ו",4 Tishrei,Hanukah 5776,1 Nissan,Hanukah 5776,Rosh Hashana 5776,vegetable,4 Tishrei 5775,25 Kislev 5776,1 Nissan 5775,25 Kislev 5776,3 Tishrei 5776
+אבטיח,Watermelon,ד תשרי,חנוכה תשע”ו,א ניסן,חנוכה תשע”ו,"ראה”ש תשע""ו",4 Tishrei,Hanukah 5776,1 Nissan,Hanukah 5776,Rosh Hashana 5776,fruit,4 Tishrei 5775,25 Kislev 5776,1 Nissan 5775,25 Kislev 5776,3 Tishrei 5776
 אורז,Rice,אין,אין,אין,אין,אין,None,None,None,None,None,grain,None,None,None,None,None
 איזוב מצוי,Zaatar,ד תשרי,סוף כסלו תשע”ו,אין,אין,אין,4 Tishrei,End Kislev 5776,None,None,None,vegetable,4 Tishrei 5775,28 Kislev 5776,None,None,None
-אננס,Pineapple,ד תשרי,לא ידוע,אין,אין,אין,4 Tishrei,Unknown,None,None,None,vegetable,4 Tishrei 5775,1 Tishrei 6000,None,None,None
+אננס,Pineapple,ד תשרי,לא ידוע,אין,אין,אין,4 Tishrei,Unknown,None,None,None,fruit,4 Tishrei 5775,1 Tishrei 6000,None,None,None
 אספרגוס,Asparagus,ד תשרי,לא ידוע,אין,אין,"ראה”ש תשע""ו",4 Tishrei,Unknown,None,None,Rosh Hashana 5776,vegetable,4 Tishrei 5775,1 Tishrei 6000,None,None,3 Tishrei 5776
 אפונה – תרמיל,Pea (in pod),ד תשרי,חנוכה תשע”ו,כג ניסן,חנוכה תשע”ו,א תמוז (תשע”ה),4 Tishrei,Hanukah 5776,23 Nissan,Hanukah 5776,1 Tammuz (5775),vegetable,4 Tishrei 5775,25 Kislev 5776,23 Nissan 5775,25 Kislev 5776,1 Tammuz 5775
 אפונה – גרגרים,Pea (dry),אין,אין,אין,אין,אין,None,None,None,None,None,vegetable,None,None,None,None,None
@@ -100,7 +100,7 @@ Hebrew,English,KedushaHe,NoKedushaHe,SefihinHe,NoSefihinHe,BiurHe,KedushaEn,NoKe
 תירס,Corn,יא תשרי,חנוכה תשע”ו,יא תשרי,חנוכה תשע”ו,אין,11 Tishrei,Hanukah 5776,11 Tishrei,Hanukah 5776,None,vegetable,11 Tishrei 5775,25 Kislev 5776,11 Tishrei 5775,25 Kislev 5776,None
 תפוח אדמה,Potato,ג כסלו,א טבת תשע”ו,א טבת,א טבת תשע”ו,א אב תשע”ה,3 Kislev,1 Tevet 5776,1 Tevet,1 Tevet 5776,1 Av (5775),vegetable,3 Kislev 5775,1 Tevet 5776,1 Tevet 5775,1 Tevet 5776,1 Av 5775
 תרד,Spinach,ד תשרי,ה כסלו תשע”ו,א כסלו,ה כסלו תשע”ו,אין,4 Tishrei,5 Kislev 5776,1 Kislev,5 Kislev 5776,None,vegetable,4 Tishrei 5775,5 Kislev 5776,1 Kislev 5775,5 Kislev 5776,None
-אבוקדו,Avocado,תמוז,תמוז תשע”ו,אין,אין,תמוז תשע”ו,Tammuz,Tammuz 5776,None,None,Tammuz 5776,vegetable,1 Tammuz 5775,28 Tammuz 5776,None,None,1 Tammuz 5776
+אבוקדו,Avocado,תמוז,תמוז תשע”ו,אין,אין,תמוז תשע”ו,Tammuz,Tammuz 5776,None,None,Tammuz 5776,fruit,1 Tammuz 5775,28 Tammuz 5776,None,None,1 Tammuz 5776
 אגוז לוז (אילסר),Hazelnut,אין,אין,אין,אין,אין,None,None,None,None,None,fruit,None,None,None,None,None
 אגוז מלך,Walnut,אין,אין,אין,אין,אין,None,None,None,None,None,fruit,None,None,None,None,None
 אגוז מקדמיה,Macadamia nut,אלול,אלול תשע”ו,אין,אין,אדר תשע”ו,Elul,Elul 5776,None,None,Adar 5776,fruit,1 Elul 5775,28 Elul 5776,None,None,1 Adar 5776
