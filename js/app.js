@@ -28,5 +28,6 @@ Shmita.app.config(function($routeProvider) {
 		})
 		.when('/calendar', {
 			templateUrl : 'pages/calendar.html',
+			controller : 'CalendarController'
 		});
 });

@@ -33,6 +33,12 @@ Shmita.app.controller('MainController', function($scope, language) {
 			English: 'By Status',
 			Hebrew: 'לפי סטטוס',
 			route: 'status'
+		},
+		{
+			name: 'Calendar',
+			English: 'Calendar',
+			Hebrew: 'יומן',
+			route: 'calendar'
 		}
 	]
 
@@ -165,6 +171,19 @@ Shmita.app.controller('SpeciesController', function($scope, $routeParams, specie
 
 	function initList() {
 		species.getList($routeParams.species).then(function(list) {
+			$scope.foodList = list;
+		});
+	}
+	initList();
+});
+
+Shmita.app.controller('CalendarController', function($scope, $routeParams, calendar) {
+	$scope.$watch($routeParams.calendar, initList);
+
+	$scope.getCalendar=function() { calendar.getCalendar(); };
+
+	function initList() {
+		calendar.getList($routeParams.calendar).then(function(list) {
 			$scope.foodList = list;
 		});
 	}

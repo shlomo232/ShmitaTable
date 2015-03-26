@@ -1,1 +1,44 @@
-calendar
+<div ng-if="language === 'English'">
+	To download calendar, click the button. <button ng-click="getCalendar()">Get calendar</button>
+<p>
+This is an ICAL calendar file that can be added to any calendar application (Outlook, Google Calendar, etc.). It will then alert you whenever the shmita status of any food changes.
+<p>
+<font size=+2><b>How to use:</b></font>
+<p>
+To use this calendar, follow these steps:
+<ol>
+<li><b>Create a new calendar.</b> (This is recommended, not required. If you ever want to delete the Shmita Table calendar entries, you can just delete this calendar without affecting any events that were previously in your calendar.)<p>In Google Calendar, this is done by going to the bottom left of the calendar, and choosing <b>My calendars->Create new calendar</b>.
+<p> <img class="screenshot" src="img/newcal.png">
+</li>
+<li><b>Import the Shmita Table file to this calendar.</b><p>In Google Calendar, this is done by going to the bottom left of the calendar, and choosing <b>Other calendars->Import calendar</b>.
+<p><img class="screenshot"  src="img/importcal.png">
+<p>Then, select the file you downloaded, and choose the new calendar you just created.
+<p><img class="screenshot"  src="img/selectfile.png">
+</li>
+</ol>
+
+</div>
+<div ng-if="language === 'Hebrew'" style="direction: rtl;">
+כדי להוריד את יומן, יש ללחוץ על הכפתור:
+<button ng-click="getCalendar()">הוסף יומן</button>
+<p>
+זה קובץ ICAL שניתן להוסיף אותו לכל אפליקציית לוח שנה (Outlook, Google Calendar וכו'), והוא יודיע לך על כל שינוי סטטוס של מאכל בשנת השמיטה.
+<p>
+<font size=+2><b>איך משתמשים:</b></font>
+<p>
+כדי להשתמש ביומן, יש לבצע את הפעולות הבאות:
+<ol>
+<li><b>ליצור יומן חדש.</b> מומלץ ולא חובה. אם אי פעם תרצה למחוק את יומן השמיטה מהיומן שלך, רצוי שיהיה יומן נפרד לשמיטה כדי שתוכל למחוק רק אותו בלי להשפיע על שאר האירועים שהיו ביומן שלך.
+<p>ביומן גוגל, יש ליצור יומן על ידי בחירת <b>היומנים שלי - צור יומן חדש</b> בצד הימני של היומן.
+<p> <img class="screenshot"  src="img/newcalhe.png">
+</li>
+<li><b>יבא את הקובץ ליומן זה.</b>
+<p>ביומן גוגל, יש לבחור <b>יומנים אחרים - יבא יומן</b>.
+ <p><img class="screenshot"  src="img/importcalhe.png">
+<p>אז, תבחר את הקובץ שהורדת ואת היומן שכעת יצרת.
+<p><img class="screenshot"  src="img/selectfilehe.png">
+</li>
+</ol>
+
+
+</div>

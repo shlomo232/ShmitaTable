@@ -74,3 +74,7 @@ button.nav-lang {
     font-size: 30px;
     font-weight: bold;
 }
+.screenshot {
+   padding:1px;
+   border:1px solid #021a40;
+}
