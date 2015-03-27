@@ -23,8 +23,8 @@ Shmita.app.controller('MainController', function($scope, language) {
 			route: ''
 		},
 		{
-			name: 'By Species',
-			English: 'By Species',
+			name: 'By Name',
+			English: 'By Name',
 			Hebrew: 'לפי שם',
 			route: 'species'
 		},
