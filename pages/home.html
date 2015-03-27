@@ -2,6 +2,8 @@
     <p class="about-heading">
         <img src="icon.png"> Shmita Table
     </p>
+<button type="button" class="btn nav-lang" ng-cloak ng-click="switchLanguage()">{{ languageLabel() }}</button>
+
     <p>
     	This app displays the shmita status of each species of fruit and vegetable based on the current date.</p><p>Data is taken mostly from the table at <a href="http://www.hamachon.co.il/web/project/project.asp?id=18777&modul=40&codeclient=1738&codesubweb=0#">hamachon.co.il</a> with some data from <a href="http://www.toraland.org.il/%D7%91%D7%99%D7%AA-%D7%94%D7%9E%D7%93%D7%A8%D7%A9/%D7%A9%D7%A0%D7%AA-%D7%A9%D7%9E%D7%99%D7%98%D7%94-%D7%AA%D7%A9%D7%A2%D7%94/%D7%9C%D7%95%D7%97-%D7%A7%D7%93%D7%95%D7%A9%D7%AA-%D7%A9%D7%91%D7%99%D7%A2%D7%99%D7%AA-%D7%95%D7%91%D7%99%D7%A2%D7%95%D7%A8-%D7%91%D7%A4%D7%99%D7%A8%D7%95%D7%AA-%D7%94%D7%90%D7%99%D7%9C%D7%9F.aspx">Otzar Haaretz</a>.
     </p>
@@ -14,6 +16,7 @@
     <p class=about-heading dir="rtl">
         <img src="icon.png"> Shmita Table (לוח שמיטה)
     </p>
+<p dir="rtl"><button type="button" class="btn nav-lang" ng-cloak ng-click="switchLanguage()">{{ languageLabel() }}</button></p>
     <p dir="rtl">אפליקצייה זו מראה את הסטטוס לגבי שמיטה של כל פרי וירק בתאריך הנוכחי. </p>
     <p dir="rtl">הנתונים לוקחו מהטבלאות באתר <a href="http://www.hamachon.co.il/web/project/project.asp?id=18777&modul=40&codeclient=1738&codesubweb=0#">המכון למצוות תלויות בארץ</a> ובאתר <a href="http://www.toraland.org.il/%D7%91%D7%99%D7%AA-%D7%94%D7%9E%D7%93%D7%A8%D7%A9/%D7%A9%D7%A0%D7%AA-%D7%A9%D7%9E%D7%99%D7%98%D7%94-%D7%AA%D7%A9%D7%A2%D7%94/%D7%9C%D7%95%D7%97-%D7%A7%D7%93%D7%95%D7%A9%D7%AA-%D7%A9%D7%91%D7%99%D7%A2%D7%99%D7%AA-%D7%95%D7%91%D7%99%D7%A2%D7%95%D7%A8-%D7%91%D7%A4%D7%99%D7%A8%D7%95%D7%AA-%D7%94%D7%90%D7%99%D7%9C%D7%9F.aspx">אוצר הארץ</a>.</p>
     <p dir="rtl">התאריך היום הוא {{now.getDate()}} {{monthListEnHe[now.getMonth()]}} {{now.getFullYear()}} ({{nowHe[2]}} {{monthListHeHe[nowHe[1]-1]}} {{nowHe[0]}}).</p>

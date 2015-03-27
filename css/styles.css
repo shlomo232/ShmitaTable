@@ -59,9 +59,11 @@ nav .nav {
 	left: 0;
 }
 button.nav-lang {
-	position: absolute;
+
+	background-color: #99ff99;
+/*	position: absolute;
 	right: 10px;
-	top: 10px;
+	top: 10px;*/
 }
 .fruit {
 	color: #6633cc;
