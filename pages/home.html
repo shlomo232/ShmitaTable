@@ -3,22 +3,24 @@
         <img src="icon.png"> Shmita Table
     </p>
 <button type="button" class="btn nav-lang" ng-cloak ng-click="switchLanguage()">{{ languageLabel() }}</button>
-
-    <p>
-    	This app displays the shmita status of each species of fruit and vegetable based on the current date.</p><p>Data is taken mostly from the table at <a href="http://www.hamachon.co.il/web/project/project.asp?id=18777&modul=40&codeclient=1738&codesubweb=0#">hamachon.co.il</a> with some data from <a href="http://www.toraland.org.il/%D7%91%D7%99%D7%AA-%D7%94%D7%9E%D7%93%D7%A8%D7%A9/%D7%A9%D7%A0%D7%AA-%D7%A9%D7%9E%D7%99%D7%98%D7%94-%D7%AA%D7%A9%D7%A2%D7%94/%D7%9C%D7%95%D7%97-%D7%A7%D7%93%D7%95%D7%A9%D7%AA-%D7%A9%D7%91%D7%99%D7%A2%D7%99%D7%AA-%D7%95%D7%91%D7%99%D7%A2%D7%95%D7%A8-%D7%91%D7%A4%D7%99%D7%A8%D7%95%D7%AA-%D7%94%D7%90%D7%99%D7%9C%D7%9F.aspx">Otzar Haaretz</a>.
-    </p>
-    <p>
-    	Today's date is {{now.getDate()}} {{monthListEn[now.getMonth()]}} {{now.getFullYear()}} ({{nowHe[2]}} {{monthListHe[nowHe[1]-1]}} {{nowHe[0]}}).</p><p>Fruits are displayed in <span class="fruit">purple</span> text, and vegetables in <span class="vegetable">green</span> text. Other foods (like grains and spices) are in <span style="font-weight:bold">black</span>.
-    </p>
+<p>This app displays the shmita status of each species of fruit and vegetable based on the current date. Fruits are displayed in <span class="fruit">purple</span> text, and vegetables in <span class="vegetable">green</span> text. Other foods (like grains and spices) are in <span style="font-weight:bold">black</span>.</p>
+<p>In addition, you can download a calendar file, which can be imported to Google Calendar or another calendar program. It will alert you whenever the status of a food changes.</p>
+<p>A brief overview of the statuses:
+<ul><li><span style="font-weight:bold">Kedushat shviit</span> ("Kedushah"): Produce which grew in the Land of Israel during the shmita year. This produce must be eaten rather than wasted or destroyed. There are also restrictions on how you can farm and buy/sell this produce. Therefore, when a species has Kedushah, you must make sure to either obtain and consume it in acceptable ways (like "otzar beit din"), or else rely on a loophole (like "heter mechira" or "yevul nochri") so that the actual produce you buy does not have Kedushah.</li>
+<li><span style="font-weight:bold">Sfichin</span>: Produce which began growing (was planted) during the shmita year. It is forbidden to eat such produce, unless it uses a loophole like "heter mechira" or "yevul nochri".</li>
+<li><span style="font-weight:bold">Biur</span>: Produce with Kedushah ("otzar beit din") must be physically removed from one's home after a certain date, if you still have them then.</li></ul>
+</p>
+<p>For a full explanation of the shmita laws, see <a href="http://rabbihaber.files.wordpress.com/2014/08/shemita-guide.pdf">here</a>.
+<p>Data is taken mostly from the table at <a href="http://www.hamachon.co.il/web/project/project.asp?id=18777&modul=40&codeclient=1738&codesubweb=0#">hamachon.co.il</a> with some data from <a href="http://www.toraland.org.il/%D7%91%D7%99%D7%AA-%D7%94%D7%9E%D7%93%D7%A8%D7%A9/%D7%A9%D7%A0%D7%AA-%D7%A9%D7%9E%D7%99%D7%98%D7%94-%D7%AA%D7%A9%D7%A2%D7%94/%D7%9C%D7%95%D7%97-%D7%A7%D7%93%D7%95%D7%A9%D7%AA-%D7%A9%D7%91%D7%99%D7%A2%D7%99%D7%AA-%D7%95%D7%91%D7%99%D7%A2%D7%95%D7%A8-%D7%91%D7%A4%D7%99%D7%A8%D7%95%D7%AA-%D7%94%D7%90%D7%99%D7%9C%D7%9F.aspx">Otzar Haaretz</a>.</p>
+    <p>Today's date is {{now.getDate()}} {{monthListEn[now.getMonth()]}} {{now.getFullYear()}} ({{nowHe[2]}} {{monthListHe[nowHe[1]-1]}} {{nowHe[0]}}).</p>
 </div>
 
 <div ng-if="language === 'Hebrew'">
-    <p class=about-heading dir="rtl">
-        <img src="icon.png"> Shmita Table (לוח שמיטה)
-    </p>
-<p dir="rtl"><button type="button" class="btn nav-lang" ng-cloak ng-click="switchLanguage()">{{ languageLabel() }}</button></p>
-    <p dir="rtl">אפליקצייה זו מראה את הסטטוס לגבי שמיטה של כל פרי וירק בתאריך הנוכחי. </p>
+    <p class=about-heading dir="rtl"><img src="icon.png"> Shmita Table (לוח שמיטה)</p>
+    <p dir="rtl"><button type="button" class="btn nav-lang" ng-cloak ng-click="switchLanguage()">{{ languageLabel() }}</button></p>
+    <p dir="rtl">אפליקצייה זו מראה את הסטטוס לגבי שמיטה של כל פרי וירק בתאריך הנוכחי. פירות מוצגים בצבע <span class="fruit">סגול</span>, ירקות בצבע <span class="vegetable">ירוק</span>, ושאר מינים (כמו דגנים ותבלינים) בצבע <span style="font-weight:bold">שחור.</span></p>
+    <p dir="rtl">בנוסף, ניתן להוריד קובץ יומן, שאפשר לייבא אותו ליומן גוגל או כל תוכנת יומן אחרת, שיעשה לך התראה כשהסטטוס של פרי מסוים משתנה.</p>
     <p dir="rtl">הנתונים לוקחו מהטבלאות באתר <a href="http://www.hamachon.co.il/web/project/project.asp?id=18777&modul=40&codeclient=1738&codesubweb=0#">המכון למצוות תלויות בארץ</a> ובאתר <a href="http://www.toraland.org.il/%D7%91%D7%99%D7%AA-%D7%94%D7%9E%D7%93%D7%A8%D7%A9/%D7%A9%D7%A0%D7%AA-%D7%A9%D7%9E%D7%99%D7%98%D7%94-%D7%AA%D7%A9%D7%A2%D7%94/%D7%9C%D7%95%D7%97-%D7%A7%D7%93%D7%95%D7%A9%D7%AA-%D7%A9%D7%91%D7%99%D7%A2%D7%99%D7%AA-%D7%95%D7%91%D7%99%D7%A2%D7%95%D7%A8-%D7%91%D7%A4%D7%99%D7%A8%D7%95%D7%AA-%D7%94%D7%90%D7%99%D7%9C%D7%9F.aspx">אוצר הארץ</a>.</p>
     <p dir="rtl">התאריך היום הוא {{now.getDate()}} {{monthListEnHe[now.getMonth()]}} {{now.getFullYear()}} ({{nowHe[2]}} {{monthListHeHe[nowHe[1]-1]}} {{nowHe[0]}}).</p>
-    <p dir="rtl">פירות מוצגים בצבע <span class="fruit">סגול</span>, ירקות בצבע <span class="vegetable">ירוק</span>, ושאר מינים (כמו דגנים ותבלינים) בצבע <span style="font-weight:bold">שחור.</span></p>
+
  </div>
