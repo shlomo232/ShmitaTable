@@ -80,17 +80,12 @@ Shmita.app.factory('calendar', function($http, $q, utils, CSV) {
 			idCount++;
 		} 
 
-		//Sort event objects by date, then event, then food (https://github.com/Teun/thenBy.js)
-		firstBy=(function(){function e(f){f.thenBy=t;return f}
-			function t(y,x){x=this;return e(function(a,b){return x(a,b)||y(a,b)})}return e})();
-		// Copyright 2013 Teun Duynstee Licensed under the Apache License, Version 2.0
 		events.sort(
-			firstBy(function (v1, v2) { return v1.date - v2.date; })
-			.thenBy(function (v1, v2) { return v1.event - v2.event; })
-			.thenBy(function (v1, v2) { return v1.food - v2.food; })
-		);
-
-//		events.sort(function (v1, v2) { return v1.date - v2.date; });
+			function (v1, v2) { 
+				if (v1.date > v2.date) return 1; 
+				else if (v1.date < v2.date) return -1;
+				else return v1.food.localeCompare(v2.food);
+			});
 
 		//Merge event objects
 		for (var i = 0; i < events.length; i++) {
