@@ -3,7 +3,7 @@ http://stackoverflow.com/questions/21254438/angularjs-get-length-of-returned-fil
 <div ng-if="language === 'English'">
 	Click on a species to see its information. You can filter species using the text box.
 	<form class="form-inline">
-		<input ng-model="query" type="text" placeholder="Filter by" autofocus>
+		<input ng-model="query" class="form-control" type="text" placeholder="Filter by" autofocus>
 	</form>
 	<ul style="line-height:220%">
 		<li ng-repeat="food in foodList | filter:{English:query} | orderBy: 'English' " class="{{food.Type}}"><div style="display: inline-block;" ng-click="dialogEn(food);">{{getTranslation(food)}}</div></li>
@@ -12,7 +12,7 @@ http://stackoverflow.com/questions/21254438/angularjs-get-length-of-returned-fil
 <div ng-if="language === 'Hebrew'" style="direction: rtl;">
 	לחץ על סוג פרי/ירק כדי לראות את הפרטים שלו. אפשר לסנן על ידי הקלדה בתיבת טקסט.
 	<form class="form-inline">
-		<input ng-model="query" type="text" placeholder="סנן לפי" autofocus>
+		<input ng-model="query" class="form-control" type="text" placeholder="סנן לפי" autofocus>
 	</form>
 	<ul style="line-height:220%">
 		<li ng-repeat="food in foodList | filter:{Hebrew:query} | orderBy: 'Hebrew' " class="{{food.Type}}"><div style="display: inline-block;" ng-click="dialogHe(food);">{{getTranslation(food)}}</div></li>
