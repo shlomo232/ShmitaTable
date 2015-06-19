@@ -1,0 +1,280 @@
+<html> 
+<head>
+<title>Cost of living calculator</title>
+<style>
+
+.table {
+  font-size: 140%;
+  text-align: center;
+  padding: 3px;
+}
+
+.note {
+  font-size: xx-small;
+  padding: 3px;
+  color: #333333;
+}
+</style>
+<script>
+function recalc() {
+	numSchool=parseInt(document.getElementById("schoolkids").value);
+	numGan=parseInt(document.getElementById("gankids").value);
+	numPeople=numSchool+numGan+2;
+
+// Rent
+	if (document.getElementById("uslocation").value=="UWS")
+		document.getElementById("usrent").innerHTML=3500+(numSchool+numGan)*1200;
+	else if (document.getElementById("uslocation").value=="LI")
+		document.getElementById("usrent").innerHTML=2000+(numSchool+numGan)*300;
+	else if (document.getElementById("uslocation").value=="LA")
+		document.getElementById("usrent").innerHTML=1400+(numSchool+numGan)*500;
+	else if (document.getElementById("uslocation").value=="SS")
+		document.getElementById("usrent").innerHTML=1200+(numSchool+numGan)*200;
+	else
+		document.getElementById("usrent").innerHTML=600+(numSchool+numGan)*300;
+	if (document.getElementById("illocation").value=="ta")
+		document.getElementById("ilrent").innerHTML=1050+(numSchool+numGan)*210;
+	else if (document.getElementById("illocation").value=="jm")
+		document.getElementById("ilrent").innerHTML=800+(numSchool+numGan)*130;
+	else
+		document.getElementById("ilrent").innerHTML=500+(numSchool+numGan)*90;
+// Car
+	if (document.getElementById("car").value=="1") {
+		document.getElementById("ustrans").innerHTML=650;
+		document.getElementById("iltrans").innerHTML=800;
+	} else if (document.getElementById("car").value=="2") {
+		document.getElementById("ustrans").innerHTML=1300;
+		document.getElementById("iltrans").innerHTML=1600;
+	} else {
+		document.getElementById("ustrans").innerHTML=75;
+		document.getElementById("iltrans").innerHTML=75;
+	}
+
+// Schools and gan
+	if (document.getElementById("schooltype").value=="private")
+		document.getElementById("usschool").innerHTML=numSchool*1200;
+	else document.getElementById("usschool").innerHTML=0;
+	document.getElementById("ilschool").innerHTML=35*numSchool;
+	document.getElementById("usgan").innerHTML=numGan*900;
+	document.getElementById("ilgan").innerHTML=numGan*650;
+
+// Per person things
+	document.getElementById("usfood").innerHTML=numPeople*220;
+	document.getElementById("ilfood").innerHTML=numPeople*175;
+	document.getElementById("usclothes").innerHTML=numPeople*70;
+	document.getElementById("ilclothes").innerHTML=numPeople*110;
+	document.getElementById("ushealth").innerHTML=300; //numPeople*300;
+
+// Calculate totals
+	var ussum, ilsum;
+	ussum=
+		parseInt(document.getElementById("usrent").innerHTML)+
+		parseInt(document.getElementById("usarnona").innerHTML)+
+		parseInt(document.getElementById("uselec").innerHTML)+
+		parseInt(document.getElementById("uswater").innerHTML)+
+		parseInt(document.getElementById("usrepair").innerHTML)+
+		parseInt(document.getElementById("ustrans").innerHTML)+
+		parseInt(document.getElementById("usschool").innerHTML)+
+		parseInt(document.getElementById("usgan").innerHTML)+
+		parseInt(document.getElementById("usfood").innerHTML)+
+		parseInt(document.getElementById("usclothes").innerHTML)+
+		parseInt(document.getElementById("ushealth").innerHTML)+
+		parseInt(document.getElementById("usphone").innerHTML)+
+		parseInt(document.getElementById("usinternet").innerHTML)+
+		parseInt(document.getElementById("usiphone").innerHTML);
+	ilsum=
+		parseInt(document.getElementById("ilrent").innerHTML)+
+		parseInt(document.getElementById("ilarnona").innerHTML)+
+		parseInt(document.getElementById("ilelec").innerHTML)+
+		parseInt(document.getElementById("ilwater").innerHTML)+
+		parseInt(document.getElementById("ilrepair").innerHTML)+
+		parseInt(document.getElementById("iltrans").innerHTML)+
+		parseInt(document.getElementById("ilschool").innerHTML)+
+		parseInt(document.getElementById("ilgan").innerHTML)+
+		parseInt(document.getElementById("ilfood").innerHTML)+
+		parseInt(document.getElementById("ilclothes").innerHTML)+
+		parseInt(document.getElementById("ilhealth").innerHTML)+
+		parseInt(document.getElementById("ilphone").innerHTML)+
+		parseInt(document.getElementById("ilinternet").innerHTML)+
+		parseInt(document.getElementById("iliphone").innerHTML);
+
+	document.getElementById("ustotal").innerHTML="<b>"+ussum+"</b>";
+	document.getElementById("iltotal").innerHTML="<b>"+ilsum+"</b>";
+	document.getElementById("ustotaltax").innerHTML="<b>"+ussum+"</b>";
+	document.getElementById("iltotaltax").innerHTML="<b>"+Math.round(ilsum*1.08)+"</b>";
+}
+</script>
+</head>
+<body onload="recalc()">
+This tool is designed to compare cost of living in the US and Israel for a family of 2 adults and any number of kids.
+<p><b>1. Some background:</b>
+<p>
+Many of these calculations are based on statistics for the "average" person or family. Of course, nobody is exactly average. Costs vary for many reasons, for example:
+<ul><li> Location (Manhattan vs Mississippi, Tel Aviv vs Beer Sheva)
+<li>Social class and communal standards
+<li>Individual needs and tastes
+<li>Ability to budget</ul>
+So don't rely on these numbers as an exact prediction of your expenses in a given place. Do rely on them as an approximate comparison of the costs in two different places.
+<p>
+<b>2. Some questions about how you live:</b>
+<p>
+How many school-age kids (K-12) do you have? 
+<select id="schoolkids" onChange="recalc()">
+<option value="0" selected>0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+</select>
+<p>
+What school do you send them to in the US?
+<select id="schooltype" onChange="recalc()">
+<option value="private" selected>Private (inc. day school)</option>
+<option value="public">Public</option>
+</select>
+<p>
+How many small kids (age 0-5) do you have?
+<select id="gankids" onChange="recalc()">
+<option value="0" selected>0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+</select>
+
+<p>
+How many cars do/will you have?
+<select id="car" onChange="recalc()">
+<option value="0">None - use public transit</option>
+<option value="1" selected>1</option>
+<option value="2" >2</option>
+</select>
+
+<p>
+Where would you live in the US? (Choose the location most similar to yours)
+<select id="uslocation" onChange="recalc()">
+<option value="UWS" selected>Upper West Side, NYC</option>
+<option value="LI">Long Island, NY</option>
+<option value="LA">Encino (upper-middle class suburb of Los Angeles)</option>
+<option value="SS">Silver Spring, MD (middle class suburb of DC)</option>
+<option value="STL">University City, MO (middle class suburb of St Louis, mediocre schools)</option>
+</select>
+
+<p>
+Where would you live in Israel?
+<select id="illocation" onChange="recalc()">
+<option value="ta" selected>Tel Aviv</option>
+<option value="jm">Jerusalem or the "center"</option>
+<option value="cheap">Periphery</option>
+</select>
+
+<p>
+<b>3. A comparison of your projected expenses per month:</b>
+<p>
+<table>
+<tr><td class="table"><b>Type of expense</b></td>
+<td class="table"><b>US cost&nbsp;($)</b></td>
+<td class="table"><b>Israel cost ($)</b></td>
+<td class="table"><b>Notes</b></td>
+</tr>
+
+<tr><td class="table">Rent</td>
+<td class="table"><div id="usrent"></div></td>
+<td class="table"><div id="ilrent"></div></td>
+<td class="note"> Assumes on average approximately 2/3 bedroom per kid. US: <a href="http://www.realtor.com">source</a>. IL: <a href="http://www.cbs.gov.il/price_new/a6_4_h.pdf">source</a>, Jerusalem is $800+$130/kid for example. Housing is evaluated in terms of number of bedrooms. Note that Israeli rooms and yards are smaller than those in the US Midwest, for example.</td>
+</tr>
+
+<tr>
+<td class="table">Arnona</td>
+<td class="table"><div id="usarnona">0</div></td>
+<td class="table"><div id="ilarnona">100</div></td>
+<td class="note"> IL: Assuming 50sh/sq.m. for a 100sq.m. apartment. (<a href="http://www.themarker.com/realestate/1.2139045">source</a>). US real estate tax of about $250/month (a rough average over states where Jews live - <a href="https://eyeonhousing.files.wordpress.com/2013/10/map_1.png">source</a>) is included in rent.</td>
+</tr>
+
+<tr><td class="table">Electricity </td>
+<td class="table"><div id="uselec">100</div></td>
+<td class="table"><div id="ilelec">130</div></td>
+<td class="note">Average family monthly bill. US <a href="http://www.eia.gov/electricity/sales_revenue_price/pdf/table5_a.pdf">source</a>, IL <a href="http://www.shopia.co.il/he/%D7%97%D7%A9%D7%9E%D7%9C">source</a>.</td>
+</tr>
+
+<tr><td class="table">Water</td>
+<td class="table"><div id="uswater">40</div></td>
+<td class="table"><div id="ilwater">70</div></td>
+<td class="note">US: <a href="http://www.circleofblue.org/waternews/wp-content/uploads/2014/05/WaterPricing2014TableInteractive.pdf">source</a>. IL: <a href="http://mei-avivim.co.il/?CategoryID=178">source</a> <a href="http://www.water.gov.il/hebrew/rates/pages/rates.aspx">source</a></td>
+</tr>
+
+<tr><td class="table">Home repairs</td>
+<td class="table"><div id="usrepair">40</div></td>
+<td class="table"><div id="ilrepair">30</div></td>
+<td class="note">This is based on the assumption of 1 handyman visit every 2 months. US: <a href="http://www.angieslist.com/articles/how-much-does-it-cost-hire-handyman.htm">source</a>. IL: based on my experience with multiple handymen, rounded up.</td>
+</tr>
+
+<tr><td class="table">Transportation</td>
+<td class="table"><div id="ustrans">650</div></td>
+<td class="table"><div id="iltrans"></div></td>
+<td class="note">US: <a href="http://www.investopedia.com/articles/pf/08/cost-car-ownership.asp">source</a>, IL: <a href="http://www.calcalist.co.il/money/articles/0,7340,L-3643219,00.html">source</a> <a href="http://www.ynet.co.il/articles/1,7340,L-3463513,00.html">source</a>. The difference between US and Israeli transportation costs is surprisingly small, giving the large taxes on car purchases and fuel in Israel. I expect this is partly because Israelis need to drive shorter distances on average (there is less urban sprawl), and partly because they buy cheaper cars on average (fewer SUVs or minivans).</td>
+</tr>
+
+<tr><td class="table">Education (K-12)</td>
+<td class="table"><div id="usschool"></div></td>
+<td class="table"><div id="ilschool"></div></td>
+<td class="note">IL supplements $35/kid (<a href="http://www.hila-equal-edu.org.il/heb/?p=254">source</a>)</td>
+</tr>
+
+<tr><td class="table">Childcare/gan</td>
+<td class="table"><div id="usgan"></div></td>
+<td class="table"><div id="ilgan"></div></td>
+<td class="note">US: $900/kid (<a href="http://www.babycenter.com/0_how-much-youll-spend-on-childcare_1199776.bc">source</a>). IL: $650/kid (<a href="http://www.calcalist.co.il/money/articles/0,7340,L-3643219,00.html">source</a>).</td>
+</tr>
+
+<tr><td class="table">Food</td>
+<td class="table"><div id="usfood"></div></td>
+<td class="table"><div id="ilfood"></div></td>
+<td class="note">Average expenditures: US: $220/person (<a href="http://www.cnpp.usda.gov/sites/default/files/CostofFoodMar2015.pdf">source</a>), IL: $175/person (<a href="http://www.calcalist.co.il/money/articles/0,7340,L-3643219,00.html">source</a>). While certain packaged foods are famously more expensive in Israel than in the US, other goods (like fruit, vegetables, and bread) are much cheaper (<a href="http://www.numbeo.com/cost-of-living/compare_countries_result.jsp?country1=United+States&country2=Israel">source</a>). Since food demand is economically inelastic, and calculating a representative food budget is difficult, here we rely on average expenditures for each country.</td>
+</tr>
+
+<tr><td class="table">Clothing</td>
+<td class="table"><div id="usclothes"></div></td>
+<td class="table"><div id="ilclothes"></div></td>
+<td class="note">US: $70/person (<a href="http://www.loweryourspending.com/average-clothing-costs-per-month-for-1-person.html">source</a>). IL: approximately $110/person (<a href="http://www.numbeo.com/cost-of-living/compare_countries_result.jsp?country1=United+States&country2=Israel">source</a>).</td>
+</tr>
+
+<tr><td class="table">Health insurance</td>
+<td class="table"><div id="ushealth"></div></td>
+<td class="table"><div id="ilhealth">150</div></td>
+<td class="note">US: approximately $300/family (<a href="http://www.webmd.com/health-insurance/insurance-costs/insurance-cost-calculator">source</a>). IL: $150/family. The cost is 3-5% of household income; our calculation assumes average household income. (<a href="http://www.btl.gov.il/Insurance/Health_Insurance/Pages/default.aspx">source</a>)</td>
+</tr>
+
+<tr><td class="table">Phone service for two</td>
+<td class="table"><div id="usphone">120</div></td>
+<td class="table"><div id="ilphone">30</div></td>
+<td class="note">US: <a href="http://www.dailytech.com/Average+Mobile+Phone+Bill+in+US+is+Growing+Despite+Competition/article34485.htm">source</a>. IL: <a href="http://www.kamaze.co.il/%D7%92%D7%95%D7%9C%D7%9F-%D7%98%D7%9C%D7%A7%D7%95%D7%9D.aspx">source</a>.</td>
+</tr>
+
+<tr><td class="table">Internet for a house</td>
+<td class="table"><div id="usinternet">70</div></td>
+<td class="table"><div id="ilinternet">25</div></td>
+<td class="note">US: <a href="http://www.bbc.com/news/magazine-24528383">source</a>. IL: <a href="http://www.kamaze.co.il/012.aspx">source</a>.</td>
+</tr>
+
+
+<tr><td class="table">Electronics</td>
+<td class="table"><div id="usiphone">55</div></td>
+<td class="table"><div id="iliphone">80</div></td>
+<td class="note">Cost for one unlocked iPhone 6 in June 2015. We assume each spouse buys one such phone every two years. US: <a href="http://store.apple.com/us/buy-iphone/iphone6">source</a>. IL: <a href="https://www.cellcom.co.il/store/devices/cellphones/item/iphone-6-16gb-2/58">source</a>. This includes IL VAT but not US sales tax.</td>
+</tr>
+
+<tr><td class="table"><b>Total value</b></td>
+<td class="table"><div id="ustotal">[calculate]</div></td>
+<td class="table"><div id="iltotal">[calculate]</div></td>
+<td class="note"></td>
+</tr>
+</table>
+
+<p>
+<b>4. Follow-up:</b>
+<p>This should help you compare your expenses in the US and Israel. The other side of the coin is your income. If you're thinking of aliyah, ask some olim in your future profession what you can expect to work in and earn. This varies a lot by person and career, but someone who's already "in the field" can usually give you a good idea of what to expect. Once you have a good guess at your future salary and expenses, you can be confident about whether aliyah will be financially successful for you.
